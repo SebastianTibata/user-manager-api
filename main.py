@@ -3,7 +3,7 @@ from app.api.routes import auth,tasks,users
 from sqlmodel import SQLModel
 from sqlalchemy.orm import Session
 from app.db.database import SessionLocal, engine
-from app.models import user
+
 
 
 app = FastAPI()
@@ -24,9 +24,10 @@ def get_db():
         db.close()
 
 def read_root(db: Session = Depends(get_db)):
-    return {"mensaje": "Conectado a PostgreSQL 🚀"}
+    return {"mensaje": "Conectado a PostgreSQL "}
 
 
 app.include_router(auth.router)
 app.include_router(tasks.router)
 app.include_router(users.router)
+
